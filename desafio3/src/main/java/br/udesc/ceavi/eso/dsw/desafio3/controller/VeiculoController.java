@@ -26,13 +26,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class VeiculoController {
     
     @Autowired
-    private VeiculoService service = new VeiculoService();
+    private VeiculoResource resource;
     
     @GetMapping("/Id/{id}")
     public Veiculo buscaVeiculoId(@PathParam("id") long id) {
         Veiculo veiculo = null;
         try {
-            veiculo = service.findById(id);
+            veiculo = resource.findById(id);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -45,14 +45,14 @@ public class VeiculoController {
             @PathParam("tipo") String tipo,
             @PathParam("montadora") String montadora,
             @PathParam("km") int km) {
-        return service.findByTipoMontadoraKm(tipo, montadora, km);
+        return resource.findByTipoMontadoraKm(tipo, montadora, km);
     }
 
     @GetMapping("/{tipo}")
     public List<Veiculo> buscaVeiculoTipo(@PathParam("tipo") String tipo) {
         List<Veiculo> veiculos = null;
         try {
-            veiculos = service.buscaVeiculosByTipo(tipo);
+            veiculos = resource.buscaVeiculosByTipo(tipo);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -63,7 +63,7 @@ public class VeiculoController {
     public List<Veiculo> buscaVeiculoMontadora(@PathParam("montadora") String montadora) {
         List<Veiculo> veiculos = null;
         try {
-            veiculos = service.buscarVeiculoByMontadora(montadora);
+            veiculos = resource.buscarVeiculoByMontadora(montadora);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -79,7 +79,7 @@ public class VeiculoController {
     @PutMapping("/editar")
     public void editarVeiculo(Veiculo model) {
         try {
-            service.update(model);
+            resource.update(model);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -88,7 +88,7 @@ public class VeiculoController {
     @PostMapping("/adicionarVeiculo")
     public void adicionarVeiculo(Veiculo model) {
         try {
-            service.create(model);
+            resource.save(model);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -97,7 +97,7 @@ public class VeiculoController {
     @DeleteMapping("/{id}")
     public void deletarVeiculo(@PathParam("id") Long id) {
         try {
-            service.delete(id);
+            resource.delete(id);
         } catch (Exception e) {
             e.printStackTrace();
         }

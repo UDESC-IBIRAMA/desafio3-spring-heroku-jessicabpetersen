@@ -1,4 +1,4 @@
-/*
+﻿/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -15,15 +15,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface VeiculoRepositorio extends JpaRepository<Veiculo, Long>{
 
-    public Veiculo findOne(Long id);
-
-    public Veiculo findOne(Veiculo veiculo);
-
-    public void delete(Long id);
-
-    public List<Veiculo> findAll(String tipo, String montadora, int km);
-
-    public List<Veiculo> findAll(String tipo);
+   
     
     
 }
