@@ -1,4 +1,4 @@
-package br.udesc.ceavi.eso.dsw.desafio3.desafio3;
+package dsw.Desafio3;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
